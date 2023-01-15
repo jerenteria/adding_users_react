@@ -4,6 +4,7 @@ import Card from '../UI/Card'
 import classes from './AddUser.module.css'
 import Button from '../UI/Button';
 import ErrorModal from '../UI/ErrorModal'
+import Wrapper from '../Helpers/Wrapper'
 
 const AddUser = props => {
     // Arr destructoring, useState always returns an arr with exactly 2 elements pulling 2 elements out of returned arr and 
@@ -55,19 +56,19 @@ const AddUser = props => {
     };
 
     return (
-        <div>
-        {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler}/>}
+        <Wrapper>
+            {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler}/>}
 
-        <Card className={classes.input}>
-            <form onSubmit={addUserHandler}>
-                <label htmlFor="username">Username</label>
-                <input id="username" type="text" value={enteredUsername} onChange={userNameChangeHanlder}/>
-                <label htmlFor="age">Age (years)</label>
-                <input id="age" type="number" value={enteredAge} onChange={ageChangeHanlder}/>
-                <Button type="submit">Add User</Button>
-            </form>
-        </Card>
-        </div>
+            <Card className={classes.input}>
+                <form onSubmit={addUserHandler}>
+                    <label htmlFor="username">Username</label>
+                    <input id="username" type="text" value={enteredUsername} onChange={userNameChangeHanlder}/>
+                    <label htmlFor="age">Age (years)</label>
+                    <input id="age" type="number" value={enteredAge} onChange={ageChangeHanlder}/>
+                    <Button type="submit">Add User</Button>
+                </form>
+            </Card>
+        </Wrapper>
     );
 };
 
